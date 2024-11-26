@@ -3,13 +3,14 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
     protected $pdo;
 
     public function __construct() {
-        $host = 'localhost';
-        $dbname = 'journal';
-        $username = 'root';
-        $password = '';
-
+        // $host = 'localhost';
+        // $dbname = 'journal';
+        // $username = 'root';
+        // $password = '';
         try{
-            $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+            // $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+            $config = json_decode(file_get_contents('./config/database.json'), true);
+            $conn = new PDO("mysql:host=".$config['host'].";dbname=".$config['dbname'], $config['username'], $config['password']);
             $conn->exec("SET NAMES utf8");
             $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             echo "Connecté à $dbname sur $host avec succès.";
