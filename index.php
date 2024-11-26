@@ -20,14 +20,15 @@
     <h1>Hello</h1>
 
     <?php
-        $articleDAO = new ArticlesDAO();
-        $articles = $articleDAO->getAll();
+        $articlesDAO = new ArticlesDAO();
+        $articles = $articlesDAO->getAll();
 
         foreach($articles as $article){
             echo "<pre>";
-            echo '<br>'. $article->getId() .' : '. $article->getTitre();
-            echo '<br>'. $article->getDate() .' : '. $article->getAuteur();
-            echo '<br>'. $article->getContenu();
+            echo '<br>'. $article['titre'];
+            echo '<br>'. $article['date'];
+            echo '<br>'. $article['auteur'];
+            echo '<br>'. $article['contenu'];
             echo "</pre>";
         }
     ?>

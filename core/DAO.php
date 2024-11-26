@@ -17,5 +17,15 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
         }catch (PDOExeception $e){
             die("Impossible de se connecter à la base de données $dbname :" . e->getMessage());
         }
-    }    
+    } 
+    
+    public function getAll(): array{
+        $query = "SELECT * FROM articles";
+        $sql = $this->pdo->prepare($query);
+        $sql->execute();   
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $rows[]= $row;
+        };
+        return $rows;
+    }
 }
