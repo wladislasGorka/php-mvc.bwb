@@ -31,43 +31,43 @@
             echo "</pre>";
         }
 
-        $idRetrieve = 11;
-        $articleById = $articlesDAO->retrieve($idRetrieve);
-        if($articleById){
-        echo "<pre>";
-        echo "Article : $idRetrieve \n";
-        foreach($articleById as $key => $value){
-            echo ''. $key .' : '. $value ."\n";
-        }
-        echo "</pre>";
-        }else{
-            echo "No item for id=$idRetrieve";
-        }
+        // $idRetrieve = 11;
+        // $articleById = $articlesDAO->retrieve($idRetrieve);
+        // if($articleById){
+        // echo "<pre>";
+        // echo "Article : $idRetrieve \n";
+        // foreach($articleById as $key => $value){
+        //     echo ''. $key .' : '. $value ."\n";
+        // }
+        // echo "</pre>";
+        // }else{
+        //     echo "No item for id=$idRetrieve";
+        // }
 
-        $idDelete = 17;
-        $articleById = $articlesDAO->delete($idDelete);
-        if($articleById){
-        echo "<pre>";
-        echo "Article of id: $idDelete deleted\n";
-        echo "</pre>";
-        }else{
-            echo "<pre>";
-            echo "No item for id=$idDelete";
-            echo "</pre>";
-        }
+        // $idDelete = 17;
+        // $articleById = $articlesDAO->delete($idDelete);
+        // if($articleById){
+        // echo "<pre>";
+        // echo "Article of id: $idDelete deleted\n";
+        // echo "</pre>";
+        // }else{
+        //     echo "<pre>";
+        //     echo "No item for id=$idDelete";
+        //     echo "</pre>";
+        // }
 
-        $createDatas = [
-            'titre'=>"Article 7",
-            'auteur'=>"wgorka",
-            'date'=>"2024-02-12",
-            'contenu'=>"Article sur la creation article."
-        ];
-        $articleCreate = $articlesDAO->create($createDatas);
-        if($articleCreate){
-            echo "Création d'un article";
-        }else{
-            echo "Echec création d'article";
-        }
+        // $createDatas = [
+        //     'titre'=>"Article 7",
+        //     'auteur'=>"wgorka",
+        //     'date'=>"2024-02-12",
+        //     'contenu'=>"Article sur la creation article."
+        // ];
+        // $articleCreate = $articlesDAO->create($createDatas);
+        // if($articleCreate){
+        //     echo "Création d'un article";
+        // }else{
+        //     echo "Echec création d'article";
+        // }
     ?>
 </body>
 </html>
