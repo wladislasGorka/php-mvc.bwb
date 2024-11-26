@@ -1,9 +1,9 @@
 <?php  
-class RepositoryInterface{
+interface RepositoryInterface{
 
-    public function getAll(){}
+    public function getAll(): array;
 
-    public function getAllBy($array){}
+    public function getAllBy($array): array;
 
     
 }
