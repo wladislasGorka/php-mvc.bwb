@@ -1,13 +1,13 @@
 <?php  
-class CRUDInterface{
+interface CRUDInterface{
 
-    public function create($array): User {}
+    public function create(array $data);
 
-    public function retrieve($id): User {}
+    public function retrieve($id);
 
-    public function update($id): bool {}
+    public function update($id): bool;
 
-    public function delete($id): bool {}
+    public function delete($id): bool;
 
     
 }

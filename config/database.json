@@ -1,8 +1,8 @@
 {
     "driver": "",
-    "host": "",
+    "host": "localhost",
     "port": "",
-    "dbname": "",
-    "username": "",
+    "dbname": "journal",
+    "username": "root",
     "password": ""
 }
