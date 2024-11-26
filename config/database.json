@@ -2,7 +2,7 @@
     "driver": "",
     "host": "localhost",
     "port": "",
-    "dbname": "brigitte_bdd_yb",
+    "dbname": "journal",
     "username": "root",
     "password": ""
 }

@@ -3,7 +3,7 @@ class ArticlesDAO extends DAO {
 
     public function __construct() {
         parent::__construct();
-        $this->tableName = "animaux";
+        $this->tableName = "articles";
     }
 
     public function getAllBy($array): array{}
