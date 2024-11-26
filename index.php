@@ -25,12 +25,12 @@
 
         foreach($articles as $article){
             echo "<pre>";
-            echo '<br>'. $article['titre'];
-            echo '<br>'. $article['date'];
-            echo '<br>'. $article['auteur'];
-            echo '<br>'. $article['contenu'];
+            foreach($article as $key => $value){
+                echo ''. $key .' : '. $value .'<br>';
+            }
             echo "</pre>";
         }
+          
     ?>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php  
 abstract class DAO implements CRUDInterface, RepositoryInterface{
     protected $pdo;
+    protected $tableName;
 
     public function __construct() {
         // $host = 'localhost';
@@ -12,16 +13,15 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
             $config = json_decode(file_get_contents('./config/database.json'), true);
             $conn = new PDO("mysql:host=".$config['host'].";dbname=".$config['dbname'], $config['username'], $config['password']);
             $conn->exec("SET NAMES utf8");
-            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            echo "Connecté à $dbname sur $host avec succès.";
+            echo "Connecté à ".$config['dbname']." sur ".$config['host']." avec succès.";
             $this->pdo = $conn;
         }catch (PDOExeception $e){
-            die("Impossible de se connecter à la base de données $dbname :" . e->getMessage());
+            die("Impossible de se connecter à la base de données ".$config['dbname']." :" . e->getMessage());
         }
     } 
     
     public function getAll(): array{
-        $query = "SELECT * FROM articles";
+        $query = "SELECT * FROM ".$this->tableName;
         $sql = $this->pdo->prepare($query);
         $sql->execute();   
         while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
