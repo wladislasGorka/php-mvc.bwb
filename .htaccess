@@ -1,0 +1,9 @@
+<IfModule mod rewrite.c>
+	RewriteEngine On
+	
+	RewriteCond %{Request_FILENAME} !-f
+	RewriteCond %{Request_FILENAME} !-d
+	RewriteCond %{Request_URI} $ [NC]
+	RewriteRule (.+) index.php [QSA,L]
+
+</IfModule>
