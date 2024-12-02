@@ -22,16 +22,20 @@
     <h1>Hello</h1>
 
     <?php
-        $articlesDAO = new ArticlesDAO();
-        $articles = $articlesDAO->getAll();
+        $default= new defaultDAO();
+        $results = $default->getAll();
+        echo "<pre>"; var_dump($results); echo "</pre>";
 
-        foreach($articles as $article){
-            echo "<pre>";
-            foreach($article as $key => $value){
-                echo ''. $key .' : '. $value .'<br>';
-            }
-            echo "</pre>";
-        }
+        // $articlesDAO = new ArticlesDAO();
+        // $articles = $articlesDAO->getAll();
+
+        // foreach($articles as $article){
+        //     echo "<pre>";
+        //     foreach($article as $key => $value){
+        //         echo ''. $key .' : '. $value .'<br>';
+        //     }
+        //     echo "</pre>";
+        // }
 
         // $idRetrieve = 11;
         // $articleById = $articlesDAO->retrieve($idRetrieve);
