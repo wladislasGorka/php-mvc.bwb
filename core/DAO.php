@@ -31,6 +31,19 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
         return $rows;
     }
 
+    // public function getAllBy($datas): array{
+    //     foreach ($datas as $field => $v)
+    //         $where[] = $field."".$v;
+
+    //     $query = "SELECT * FROM $this->tableName WHERE ($ins)";
+    //     $sql = $this->pdo->prepare($query);
+    //     $sql->execute();   
+    //     while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+    //         $rows[]= $row;
+    //     };
+    //     return $rows;
+    // }
+
     public function create($datas){
         foreach ($datas as $field => $v)
             $ins[] = ':' . $field;

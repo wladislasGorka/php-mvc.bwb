@@ -6,7 +6,5 @@ class ArticlesDAO extends DAO {
         $this->tableName = "articles";
     }
 
-    public function getAllBy($array): array{}
-
     public function update($id): bool{}
 }
