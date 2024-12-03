@@ -23,5 +23,11 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
     public static function getPDO(){
         return DAO::$pdo;
     }
-    
+
+    public function getAll(): array{}
+    public function getAllBy($array): array{}
+    public function create(array $data){}    
+    public function retrieve($id): array{}
+    public function update($id): bool{}
+    public function delete($id): bool{}    
 }

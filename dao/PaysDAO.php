@@ -1,11 +1,12 @@
 <?php
-class defaultDAO extends DAO {
+class PaysDAO extends DAO {
 
     public function getAll(): array{
         $pdo = $this->getPDO();
         $query = "SELECT * FROM pays";
         $sql = $pdo->prepare($query);
         $sql->execute();   
+        $rows=[];  
         while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
             $rows[]= $row;
         };
@@ -21,9 +22,11 @@ class defaultDAO extends DAO {
 
     public function retrieve($id): array{
         $pdo = $this->getPDO();
-        $query = "SELECT * FROM pays WHERE id=$id";
+        $query = "SELECT * FROM pays WHERE id=:id";
         $sql = $pdo->prepare($query);
+        $sql->bindParam(':id', $id, PDO::PARAM_INT);
         $sql->execute();   
+        $rows=[];
         while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
             $rows[]= $row;
         };
