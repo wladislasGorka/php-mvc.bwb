@@ -12,7 +12,7 @@ class Routing{
     private $uri;
 
     /**
-     * Tableau representant le route correspondente à l'uri
+     * Tableau representant la route correspondente à l'uri
      * @var array 
      */
     private $route;
@@ -35,13 +35,24 @@ class Routing{
      */
     private $method;
 
-    function __construct() {}
-
+    function __construct() {
+        $conf = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT']."/config/routing.json"), true);
+        $this->config = $conf;
+    }
+    
     /**
      * Execute l'algorithme de routage
      * @return void
      */
-    private function execute(): void {}
+    public function execute(): void {
+        $uri = parse_url($_SERVER['REQUEST_URI']);
+        $this->uri = $uri['path'];
+        $this->args = explode("&",$uri['query']);
+        $this->method = $_SERVER['REQUEST_METHOD'];
+        var_dump($this->uri);
+        var_dump($this->args);
+        var_dump($this->method);
+    }
 
     /**
      * Compare la longueur des tableaux

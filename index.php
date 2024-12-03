@@ -12,19 +12,21 @@
     <h1>Hello</h1>
 
     <?php
-        $idTest = 30;
+        // $idTest = 30;
 
-        $default= new PaysDAO();
-        $results = $default->retrieve($idTest);
-        echo "<pre>"; var_dump($results); echo "</pre>";
+        // $default= new PaysDAO();
+        // $results = $default->retrieve($idTest);
+        // echo "<pre>"; var_dump($results); echo "</pre>";
 
-        try {
-            $pays = new Pays($idTest);
-            echo "<pre>"; var_dump($pays); echo "</pre>";
-        } catch (InvalidArgumentException $e) {
-            echo "Failed to create object: " . $e->getMessage();
-        }
+        // try {
+        //     $pays = new Pays($idTest);
+        //     echo "<pre>"; var_dump($pays); echo "</pre>";
+        // } catch (InvalidArgumentException $e) {
+        //     echo "Failed to create object: " . $e->getMessage();
+        // }
         
+        $routeur = new Routing();
+        //$routeur->execute();
     ?>
 </body>
 </html>
