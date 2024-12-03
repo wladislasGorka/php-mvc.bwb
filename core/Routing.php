@@ -52,10 +52,11 @@ class Routing{
 
         foreach($this->config as $key => $value) {
             $route = explode("/",$key);
-            if(isEqual($route,$uri)) {
-                if(compare($route, $this->uri)){
+            if($this->isEqual($route,$uri)) {
+                if($this->compare($route, $this->uri)){
                     $this->route = $route;
-                    $this->controller = $value;
+                    $this->controller = $this->getValue($value);
+                    $this->invoke();
                 }
             }
         }
@@ -74,9 +75,11 @@ class Routing{
 
     /**
      * Retourne la clé (le controleur) dans le tableau des routes
-     * @return void
+     * @return string
      */
-    private function getValue(): void {}
+    private function getValue(string $controler): string {
+        return explode(":",$controler)[0];
+    }
 
     /**
      * Ajoute l'élément variable de l'URI dans la liste des arguments
@@ -97,7 +100,7 @@ class Routing{
                 return false;
             }
             if($route[$i] == "(:)") {
-                addArgument($i);
+                $this->addArgument($i);
             }
         }
         return true;
