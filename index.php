@@ -26,7 +26,8 @@
         // }
         
         $routeur = new Routing();
-        //$routeur->execute();
+        $routeur->execute();
+
     ?>
 </body>
 </html>

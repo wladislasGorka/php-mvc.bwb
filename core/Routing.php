@@ -38,27 +38,39 @@ class Routing{
     function __construct() {
         $conf = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT']."/config/routing.json"), true);
         $this->config = $conf;
+        // echo "<pre>"; var_dump($this->config); echo "</pre>";
     }
-    
+
     /**
      * Execute l'algorithme de routage
      * @return void
      */
     public function execute(): void {
         $uri = parse_url($_SERVER['REQUEST_URI']);
-        $this->uri = $uri['path'];
-        $this->args = explode("&",$uri['query']);
+        $this->uri = explode("/",$uri['path']);
         $this->method = $_SERVER['REQUEST_METHOD'];
-        var_dump($this->uri);
-        var_dump($this->args);
-        var_dump($this->method);
+
+        foreach($this->config as $key => $value) {
+            $route = explode("/",$key);
+            if(isEqual($route,$uri)) {
+                if(compare($route, $this->uri)){
+                    $this->route = $route;
+                    $this->controller = $value;
+                }
+            }
+        }
+        // echo "<pre>"; var_dump($this->uri); echo "</pre>";
+        // echo "<pre>"; var_dump($this->args); echo "</pre>";
+        // echo "<pre>"; var_dump($this->method); echo "</pre>";
     }
 
     /**
      * Compare la longueur des tableaux
-     * @return void
+     * @return bool
      */
-    private function isEqual(): void {}
+    private function isEqual($route,$uri): bool {
+        return count($route) == count($this->uri);
+    }
 
     /**
      * Retourne la clé (le controleur) dans le tableau des routes
@@ -70,14 +82,26 @@ class Routing{
      * Ajoute l'élément variable de l'URI dans la liste des arguments
      * @return void
      */
-    private function addArgument(): void {}
+    private function addArgument($index): void {
+        push($this->args, $index);
+    }
 
     /**
      * Effectue la comparaison des éléments 
      * Entre l'URI (UNIFORM RESOURCE IDENTIFIER) et la route
-     * @return void
+     * @return bool
      */
-    private function compare(): void {}
+    private function compare($route,$uri): bool {
+        for($i= 0;$i<count($route);$i++) {
+            if($route[$i] != $uri[$i] && $route[$i] != "(:)") {
+                return false;
+            }
+            if($route[$i] == "(:)") {
+                addArgument($i);
+            }
+        }
+        return true;
+    }
 
     /**
      * Invoque la méthode selectionnée
