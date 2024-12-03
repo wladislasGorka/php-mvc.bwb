@@ -23,7 +23,7 @@
 
     <?php
         $default= new defaultDAO();
-        $results = $default->getAll();
+        $results = $default->retrieve(19);
         echo "<pre>"; var_dump($results); echo "</pre>";
 
         // $articlesDAO = new ArticlesDAO();
